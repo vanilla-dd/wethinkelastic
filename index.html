@@ -45,8 +45,10 @@
     <link rel="icon" href="/images/og-icon.png" />
   </head>
   <body>
-    <div id="app">
-      <div class="loader fixed inset-0 min-h-dvh overflow-hidden bg-[#f3c77c]">
+    <div id="app" class="bg-[#151514]">
+      <div
+        class="loader fixed inset-0 z-50 min-h-dvh overflow-hidden bg-[#f3c77c]"
+      >
         <div class="relative flex h-full items-center justify-center">
           <div
             class="absolute left-1/2 top-1/2 w-64 -translate-x-1/2 -translate-y-1/2"
@@ -130,39 +132,54 @@
           </div>
         </div>
       </div>
-      <main id="main" class="bg-[#151514]">
-        <nav>
-          <img src="/svg/logo.svg" alt="" />
-          <div>
+      <main id="main">
+        <nav
+          class="fixed top-0 z-20 flex h-[100px] w-full items-center justify-between bg-[#151514] p-4 py-8"
+        >
+          <a href="/" class="w-16">
+            <img src="/svg/logo.svg" alt="" />
+          </a>
+          <div class="mr-10 flex gap-16 text-xl text-[#e7cfb1]">
             <a href="/project">Project</a>
             <a href="/expertise">Expertise</a>
             <a href="/team">The team</a>
             <a href="/contact">Contact</a>
           </div>
         </nav>
-        <div class="flex min-h-dvh overflow-hidden text-[#f3c77c]">
-          <h2 class="font-deregular flex text-[50vw] font-bold leading-none">
-            <span class="word-split block">h</span>
-            <span class="word-split block">e</span>
-            <span class="word-split block">l</span>
-            <span class="word-split block">l</span>
-            <span class="word-split block">o</span>
+        <div
+          class="flex flex-col items-center justify-center gap-12 overflow-hidden text-[#f3c77c]"
+        >
+          <h2 class="flex overflow-hidden font-deregular text-[50vw] font-bold">
+            <span class="word-split block leading-[.9]">h</span>
+            <span class="word-split block leading-[.9]">e</span>
+            <span class="word-split block leading-[.9]">l</span>
+            <span class="word-split block leading-[.9]">l</span>
+            <span class="word-split block leading-[.9]">o</span>
           </h2>
+          <div class="text-center uppercase leading-none">
+            <p
+              style="font-size: min(6.8vw, 2.5rem)"
+              class="we-animation overflow-hidden"
+            >
+              We are the team
+            </p>
+            <p
+              style="font-size: min(6.8vw, 2.5rem)"
+              class="we-animation overflow-hidden"
+            >
+              we think elastic
+            </p>
+          </div>
         </div>
+        <div class="mb-12 sm:mb-16 md:mb-20 lg:mb-24"></div>
+        <video
+          src="/video/video-start.mp4"
+          class="starting-video origin-[top_center]"
+          autoplay
+          loop
+          muted
+        ></video>
       </main>
-      <!-- arrow -->
-      <!-- <svg viewBox="0 0 23.463 17.222">
-        <g transform="translate(0 0.707)">
-          <path
-            d="M-23960.293,8885.932l7.9,7.9-7.9,7.9"
-            transform="translate(23974.439 -8885.932)"
-          ></path>
-          <path
-            d="M-23943.355,8888.791h-22.051"
-            transform="translate(23965.406 -8880.887)"
-          ></path>
-        </g>
-      </svg> -->
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>

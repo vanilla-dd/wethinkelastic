@@ -1,66 +1,128 @@
 import gsap from "gsap";
 import "./style.css";
-// import { ScrollTrigger } from "gsap/all";
-// gsap.registerPlugin(ScrollTrigger);
+import { ScrollTrigger } from "gsap/all";
+gsap.registerPlugin(ScrollTrigger);
 
-const imagesList = Array.from(document.querySelectorAll(".loader img"));
-document.body.style.overflow = "hidden";
-const imageTimeline = gsap.timeline({ repeat: -1 });
-const mainTimeline = gsap.timeline();
+// Constants
+const IMAGE_LOOP_DURATION = 0.09;
+const IMAGE_LOOP_DELAY = 0.15;
+const STAGGER_DELAY = 0.1;
+const MAIN_ANIMATION_DELAY = Math.random() * 0.7 + 1;
 
-gsap.set(imagesList, {
-  opacity: 0,
-  scale: 0.9,
+// Select DOM Elements
+const images = Array.from(document.querySelectorAll(".loader img"));
+const loader = document.querySelector(".loader");
+const wordSplitItems = document.querySelectorAll(".word-split");
+const weAnimationItems = document.querySelectorAll(".we-animation");
+const navElement = document.querySelector("nav");
+const startingVideo = document.querySelector(".starting-video");
+
+// Initial Styles
+gsap.set(images, { opacity: 0, scale: 0.9 });
+gsap.set(wordSplitItems, { y: "100%" });
+gsap.set(weAnimationItems, { y: "100" });
+gsap.set(navElement, { y: -100 });
+gsap.set("body", { overflow: "hidden" });
+gsap.set(startingVideo, { scale: 0.4 });
+
+// Disable scroll during the loader animation
+gsap.to(startingVideo, {
+  scale: 1,
+  scrollTrigger: {
+    trigger: startingVideo,
+    scroller: "body",
+    scrub: 2,
+  },
 });
-gsap.set(".word-split", {
-  y: "100%",
-});
-
-imagesList.forEach((image) => {
-  imageTimeline
+// Looping Image Animation
+const imageLoopTimeline = gsap.timeline({ repeat: -1 });
+images.forEach((image) => {
+  imageLoopTimeline
     .to(image, {
       opacity: 1,
       scale: 1,
-      duration: 0.09,
+      duration: IMAGE_LOOP_DURATION,
       ease: "none",
     })
     .to(image, {
       opacity: 0,
       scale: 0.9,
-      duration: 0.09,
+      duration: IMAGE_LOOP_DURATION,
       ease: "none",
-      delay: 0.15,
+      delay: IMAGE_LOOP_DELAY,
     });
 });
 
-mainTimeline.to(".loader", {
+// Main Animation Timeline
+const mainTimeline = gsap.timeline({
+  onComplete: () => {
+    imageLoopTimeline.pause(); // Stop the looping animation
+    document.body.style.overflow = "auto"; // Restore scroll
+  },
+});
+
+// Loader Exit Animation
+mainTimeline.to(loader, {
   y: "-100%",
   duration: 1,
   ease: "power1",
-  onComplete: () => {
-    imageTimeline.pause();
-    document.body.style.overflow = "auto";
-  },
-  delay: Math.random() * 0.7 + 1,
-});
-// window.addEventListener("DOMContentLoaded", () => {});
-
-document.addEventListener("visibilitychange", () => {
-  if (document.hidden) {
-    imageTimeline.pause();
-  } else {
-    imageTimeline.resume();
-  }
+  delay: MAIN_ANIMATION_DELAY,
 });
 
+// Word Split Animation
 mainTimeline.to(
-  ".word-split",
+  wordSplitItems,
   {
     opacity: 1,
     y: 0,
     duration: 1.5,
-    stagger: 0.1,
+    stagger: STAGGER_DELAY,
     ease: "expo",
   },
-  "-=50%",
+  "-=0.5", // Overlap with the previous animation
 );
+
+// Navigation Bar Entrance
+mainTimeline.to(
+  navElement,
+  {
+    y: 0,
+    duration: 1,
+    ease: "expo",
+  },
+  "-=1.1", // Overlap earlier for a smoother transition
+);
+
+// "We Animation" Transition
+mainTimeline.to(
+  weAnimationItems,
+  {
+    y: 0,
+    duration: 1,
+    stagger: 0.2,
+    ease: "expo",
+  },
+  "-=0.5", // Overlap with the previous animation
+);
+
+// Visibility Change Handling
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    imageLoopTimeline.pause();
+  } else {
+    imageLoopTimeline.resume();
+  }
+});
+
+// Navigation Bar Scroll Behavior
+let previousScrollY = 0;
+window.addEventListener("scroll", () => {
+  console.log(previousScrollY, window.scrollY);
+  gsap.to(navElement, {
+    y: window.scrollY > previousScrollY ? -100 : 0,
+    height: window.scrollY <= 10 ? 100 : 72,
+    duration: 0.3,
+    ease: "power1",
+  });
+  previousScrollY = window.scrollY;
+});
