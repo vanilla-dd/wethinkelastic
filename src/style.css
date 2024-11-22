@@ -17,6 +17,21 @@
 }
 
 @font-face {
+  font-family: "degular-display";
+  src:
+    url("https://use.typekit.net/af/fbbea0/00000000000000007735c876/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3")
+      format("woff2"),
+    url("https://use.typekit.net/af/fbbea0/00000000000000007735c876/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3")
+      format("woff"),
+    url("https://use.typekit.net/af/fbbea0/00000000000000007735c876/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3")
+      format("opentype");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: normal;
+}
+
+@font-face {
   font-family: "helveticaneue";
   src: url("/font/helveticaneue.woff2") format("woff2");
   font-weight: 400; /* Regular */
@@ -27,4 +42,15 @@
   src: url("/font/helveticaneue-medium.woff2") format("woff2");
   font-weight: 500; /* Medium */
   font-style: normal;
+}
+
+@layer {
+  * {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+  }
+
+  *::-webkit-scrollbar {
+    display: none; /* Webkit browsers */
+  }
 }

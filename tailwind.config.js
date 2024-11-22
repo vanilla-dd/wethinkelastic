@@ -4,8 +4,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        ivypresto: ["ivypresto", "serif"],
+        ivypresto: ["ivypresto", "helveticaneue"],
         helveticaneue: ["helveticaneue", "sans-serif"],
+        deregular: ["degular-display", "helveticaneue"],
       },
     },
   },
