@@ -2,7 +2,12 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        ivypresto: ["ivypresto", "serif"],
+        helveticaneue: ["helveticaneue", "sans-serif"],
+      },
+    },
   },
   plugins: [],
 };
