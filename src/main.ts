@@ -16,6 +16,7 @@ const wordSplitItems = document.querySelectorAll(".word-split");
 const weAnimationItems = document.querySelectorAll(".we-animation");
 const navElement = document.querySelector("nav");
 const startingVideo = document.querySelector(".starting-video");
+const textPop = document.querySelectorAll(".text-pop");
 
 // Initial Styles
 gsap.set(images, { opacity: 0, scale: 0.9 });
@@ -24,6 +25,7 @@ gsap.set(weAnimationItems, { y: "100" });
 gsap.set(navElement, { y: -100 });
 gsap.set("body", { overflow: "hidden" });
 gsap.set(startingVideo, { scale: 0.4 });
+gsap.set(textPop, { y: 180, display: "inline-block" });
 
 // Disable scroll during the loader animation
 gsap.to(startingVideo, {
@@ -31,9 +33,21 @@ gsap.to(startingVideo, {
   scrollTrigger: {
     trigger: startingVideo,
     scroller: "body",
-    scrub: 2,
+    scrub: 3,
   },
 });
+
+gsap.to(textPop, {
+  y: 0,
+  stagger: 0.2,
+  ease: "expo",
+  scrollTrigger: {
+    trigger: textPop,
+    scroller: "body",
+    start: "top 85%",
+  },
+});
+
 // Looping Image Animation
 const imageLoopTimeline = gsap.timeline({ repeat: -1 });
 images.forEach((image) => {
@@ -54,12 +68,7 @@ images.forEach((image) => {
 });
 
 // Main Animation Timeline
-const mainTimeline = gsap.timeline({
-  onComplete: () => {
-    imageLoopTimeline.pause(); // Stop the looping animation
-    document.body.style.overflow = "auto"; // Restore scroll
-  },
-});
+const mainTimeline = gsap.timeline();
 
 // Loader Exit Animation
 mainTimeline.to(loader, {
@@ -67,6 +76,9 @@ mainTimeline.to(loader, {
   duration: 1,
   ease: "power1",
   delay: MAIN_ANIMATION_DELAY,
+  onComplete: () => {
+    imageLoopTimeline.pause();
+  },
 });
 
 // Word Split Animation
@@ -78,6 +90,9 @@ mainTimeline.to(
     duration: 1.5,
     stagger: STAGGER_DELAY,
     ease: "expo",
+    onComplete: () => {
+      document.body.style.overflow = "auto"; // Restore scroll
+    },
   },
   "-=0.5", // Overlap with the previous animation
 );
@@ -112,17 +127,4 @@ document.addEventListener("visibilitychange", () => {
   } else {
     imageLoopTimeline.resume();
   }
-});
-
-// Navigation Bar Scroll Behavior
-let previousScrollY = 0;
-window.addEventListener("scroll", () => {
-  console.log(previousScrollY, window.scrollY);
-  gsap.to(navElement, {
-    y: window.scrollY > previousScrollY ? -100 : 0,
-    height: window.scrollY <= 10 ? 100 : 72,
-    duration: 0.3,
-    ease: "power1",
-  });
-  previousScrollY = window.scrollY;
 });

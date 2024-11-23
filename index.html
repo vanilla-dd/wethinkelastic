@@ -134,12 +134,12 @@
       </div>
       <main id="main">
         <nav
-          class="fixed top-0 z-20 flex h-[100px] w-full items-center justify-between bg-[#151514] p-4 py-8"
+          class="fixed top-0 z-20 flex w-full items-center justify-between bg-[#151514] p-4"
         >
-          <a href="/" class="w-16">
+          <a href="/" class="w-10 sm:w-12 md:w-14 lg:w-16">
             <img src="/svg/logo.svg" alt="" />
           </a>
-          <div class="mr-10 flex gap-16 text-xl text-[#e7cfb1]">
+          <div class="mr-10 hidden gap-16 text-xl text-[#e7cfb1] md:flex">
             <a href="/project">Project</a>
             <a href="/expertise">Expertise</a>
             <a href="/team">The team</a>
@@ -147,7 +147,7 @@
           </div>
         </nav>
         <div
-          class="flex flex-col items-center justify-center gap-12 overflow-hidden text-[#f3c77c]"
+          class="flex flex-col items-center justify-center gap-6 overflow-hidden pt-24 text-[#f3c77c] sm:gap-8 md:gap-10 lg:gap-12 lg:pt-0"
         >
           <h2 class="flex overflow-hidden font-deregular text-[50vw] font-bold">
             <span class="word-split block leading-[.9]">h</span>
@@ -179,6 +179,32 @@
           loop
           muted
         ></video>
+        <div class="mb-12 sm:mb-16 md:mb-20 lg:mb-24"></div>
+        <div class="flex flex-col items-center">
+          <div
+            style="font-size: min(11.6vw, 17rem)"
+            class="font-helveticaneue font-semibold uppercase leading-[.88] text-[#e7cfb1]"
+          >
+            <p class="overflow-hidden text-start">
+              <span class="text-pop font-ivypresto font-normal lowercase"
+                >We
+              </span>
+              <span class="text-pop">Help</span>
+            </p>
+            <p class="overflow-hidden">
+              <span class="text-pop">The Brands</span>
+            </p>
+            <p class="overflow-hidden text-end">
+              <span class="text-pop font-ivypresto font-normal lowercase"
+                >to
+              </span>
+              <span class="text-pop">Grow</span>
+            </p>
+            <p class="overflow-hidden">
+              <span class="text-pop">Faster</span>
+            </p>
+          </div>
+        </div>
       </main>
     </div>
     <script type="module" src="/src/main.ts"></script>
