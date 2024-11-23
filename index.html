@@ -147,7 +147,7 @@
           </div>
         </nav>
         <div
-          class="flex flex-col items-center justify-center gap-6 overflow-hidden pt-24 text-[#f3c77c] sm:gap-8 md:gap-10 lg:gap-12 lg:pt-0"
+          class="flex min-h-[60dvh] flex-col items-center justify-center gap-6 overflow-hidden pt-24 text-[#f3c77c] sm:gap-8 md:min-h-dvh md:gap-10 lg:gap-12 lg:pt-0"
         >
           <h2 class="flex overflow-hidden font-deregular text-[50vw] font-bold">
             <span class="word-split block leading-[.9]">h</span>
@@ -172,13 +172,15 @@
           </div>
         </div>
         <div class="mb-12 sm:mb-16 md:mb-20 lg:mb-24"></div>
-        <video
-          src="/video/video-start.mp4"
-          class="starting-video origin-[top_center]"
-          autoplay
-          loop
-          muted
-        ></video>
+        <div>
+          <video
+            src="/video/video-start.mp4"
+            class="starting-video px-5 md:scale-50 lg:origin-[top_center]"
+            autoplay
+            loop
+            muted
+          ></video>
+        </div>
         <div class="mb-12 sm:mb-16 md:mb-20 lg:mb-24"></div>
         <div class="flex flex-col items-center">
           <div
@@ -203,6 +205,80 @@
             <p class="overflow-hidden">
               <span class="text-pop">Faster</span>
             </p>
+          </div>
+        </div>
+        <div class="mb-12 sm:mb-16 md:mb-20 lg:mb-24"></div>
+        <div
+          class="grid gap-16 px-5 font-helveticaneue font-medium text-white md:grid-cols-6 md:grid-rows-3 md:gap-y-36 md:px-11"
+        >
+          <div class="space-y-3 md:col-span-3">
+            <div class="overflow-hidden">
+              <video
+                src="/video/branding.mp4"
+                muted
+                loop
+                autoplay
+                class="origin-center scale-[1.2]"
+              ></video>
+            </div>
+            <div>
+              <p>HEC PARIS IEC</p>
+              <p>Branding, Digital, Strategy</p>
+            </div>
+          </div>
+          <div class="space-y-2 self-end md:col-span-2 md:col-start-5">
+            <div class="overflow-hidden">
+              <img
+                src="/images/triangles.webp"
+                alt=""
+                class="origin-center scale-[1.2]"
+              />
+            </div>
+            <div>
+              <p>WHITE COFFEE</p>
+              <p>Branding, Strategy</p>
+            </div>
+          </div>
+          <div class="space-y-3 md:col-span-2">
+            <div class="overflow-hidden">
+              <video
+                src="/video/thumnail-beev.mp4"
+                alt=""
+                class="origin-center scale-[1.2]"
+              ></video>
+            </div>
+            <div>
+              <p>BEEV</p>
+              <p>Branding, Digital, Strategy</p>
+            </div>
+          </div>
+          <div
+            class="mt-[10vw] space-y-2 self-end md:col-span-3 md:col-start-4"
+          >
+            <div class="overflow-hidden">
+              <img
+                src="/images/luggage.webp"
+                alt=""
+                class="origin-center scale-[1.2]"
+              />
+            </div>
+            <div>
+              <p>PEUGEOT</p>
+              <p>Branding</p>
+            </div>
+          </div>
+          <div class="space-y-3 md:col-span-4 md:col-start-2">
+            <div class="overflow-hidden">
+              <img
+                src="/images/cream.webp"
+                alt=""
+                class="origin-center scale-[1.2]"
+              />
+            </div>
+            <div>
+              <p>KREME</p>
+              <p>Branding, Strategy</p>
+            </div>
           </div>
         </div>
       </main>

@@ -18,13 +18,15 @@ const navElement = document.querySelector("nav");
 const startingVideo = document.querySelector(".starting-video");
 const textPop = document.querySelectorAll(".text-pop");
 
+// window.addEventListener("unload", () => {
+//   window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+// });
 // Initial Styles
 gsap.set(images, { opacity: 0, scale: 0.9 });
 gsap.set(wordSplitItems, { y: "100%" });
 gsap.set(weAnimationItems, { y: "100" });
 gsap.set(navElement, { y: -100 });
 gsap.set("body", { overflow: "hidden" });
-gsap.set(startingVideo, { scale: 0.4 });
 gsap.set(textPop, { y: 180, display: "inline-block" });
 
 // Disable scroll during the loader animation
@@ -33,7 +35,7 @@ gsap.to(startingVideo, {
   scrollTrigger: {
     trigger: startingVideo,
     scroller: "body",
-    scrub: 3,
+    scrub: 2.5,
   },
 });
 
