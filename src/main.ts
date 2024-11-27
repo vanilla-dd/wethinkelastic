@@ -21,13 +21,15 @@ const textPop = document.querySelectorAll(".text-pop");
 // window.addEventListener("unload", () => {
 //   window.scrollTo({ top: 0, left: 0, behavior: "instant" });
 // });
+
 // Initial Styles
 gsap.set(images, { opacity: 0, scale: 0.9 });
 gsap.set(wordSplitItems, { y: "100%" });
-gsap.set(weAnimationItems, { y: "100" });
+gsap.set(weAnimationItems, { y: 100 });
 gsap.set(navElement, { y: -100 });
 gsap.set("body", { overflow: "hidden" });
 gsap.set(textPop, { y: 180, display: "inline-block" });
+gsap.set(".origin-center", { y: 36 });
 
 // Disable scroll during the loader animation
 gsap.to(startingVideo, {
@@ -47,6 +49,18 @@ gsap.to(textPop, {
     trigger: textPop,
     scroller: "body",
     start: "top 85%",
+  },
+});
+
+// 36 ,-36
+gsap.to(".origin-center", {
+  y: -36,
+  scrollTrigger: {
+    trigger: ".images-parent",
+    scroller: "body",
+    start: "top center",
+    end: "bottom center",
+    scrub: 2,
   },
 });
 
