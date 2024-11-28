@@ -64,6 +64,19 @@ gsap.to(".origin-center", {
   },
 });
 
+gsap.to(".pin-text", {
+  x: "-100%",
+  scrollTrigger: {
+    trigger: ".pin",
+    scroller: "body",
+    markers: true,
+    start: "top 0%",
+    end: "top -300%",
+    scrub: 1,
+    pin: true,
+  },
+});
+
 // Looping Image Animation
 const imageLoopTimeline = gsap.timeline({ repeat: -1 });
 images.forEach((image) => {
